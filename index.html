@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Churn Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+            <div class="brand-icon">📊</div>
+
+            <div>
+                <h1>Churn<span>AI</span></h1>
+                <p>Customer Churn Prediction System</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI Model Active
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">MACHINE LEARNING</span>
+
+            <h2>
+                Predict Customer
+                <span>Churn</span>
+            </h2>
+
+            <p>
+                Analyze customer information, contract details and
+                billing behavior to predict whether a customer is
+                likely to leave the service.
+            </p>
+
+        </div>
+
+        <div class="hero-icon">
+            🤖
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <form action="/predict" method="POST">
+
+        <div class="content-grid">
+
+
+            <!-- ================= CUSTOMER DETAILS ================= -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="section-icon blue">
+                        👤
+                    </div>
+
+                    <div>
+                        <h3>Customer Information</h3>
+                        <p>Basic customer details</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>Gender</label>
+
+                        <select name="gender" required>
+
+                            <option value="">Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Senior Citizen</label>
+
+                        <select name="SeniorCitizen" required>
+
+                            <option value="">Select</option>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Partner</label>
+
+                        <select name="Partner" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Dependents</label>
+
+                        <select name="Dependents" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Tenure (Months)</label>
+
+                        <input
+                            type="number"
+                            name="tenure"
+                            min="0"
+                            placeholder="e.g. 24"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SERVICES ================= -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="section-icon purple">
+                        📡
+                    </div>
+
+                    <div>
+                        <h3>Service Information</h3>
+                        <p>Customer subscribed services</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>Phone Service</label>
+
+                        <select name="PhoneService" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Internet Service</label>
+
+                        <select name="InternetService" required>
+
+                            <option value="">Select</option>
+                            <option value="DSL">DSL</option>
+                            <option value="Fiber optic">Fiber optic</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Online Security</label>
+
+                        <select name="OnlineSecurity" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Online Backup</label>
+
+                        <select name="OnlineBackup" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Device Protection</label>
+
+                        <select name="DeviceProtection" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Tech Support</label>
+
+                        <select name="TechSupport" required>
+
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CONTRACT & BILLING ================= -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="section-icon green">
+                        💳
+                    </div>
+
+                    <div>
+                        <h3>Contract & Billing</h3>
+                        <p>Payment and subscription details</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>Contract</label>
+
+                        <select name="Contract" required>
+
+                            <option value="">Select contract</option>
+
+                            <option value="Month-to-month">
+                                Month-to-month
+                            </option>
+
+                            <option value="One year">
+                                One year
+                            </option>
+
+                            <option value="Two year">
+                                Two year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Payment Method</label>
+
+                        <select name="PaymentMethod" required>
+
+                            <option value="">Select payment</option>
+
+                            <option value="Electronic check">
+                                Electronic check
+                            </option>
+
+                            <option value="Mailed check">
+                                Mailed check
+                            </option>
+
+                            <option value="Bank transfer (automatic)">
+                                Bank transfer
+                            </option>
+
+                            <option value="Credit card (automatic)">
+                                Credit card
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Monthly Charges</label>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="MonthlyCharges"
+                            placeholder="₹ / $ 70.50"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Total Charges</label>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="TotalCharges"
+                            placeholder="₹ / $ 1500"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PREDICTION ================= -->
+
+            <div class="prediction-card">
+
+                <div class="prediction-top">
+
+                    <div>
+
+                        <span class="prediction-label">
+                            AI PREDICTION
+                        </span>
+
+                        <h3>Analyze Customer</h3>
+
+                        <p>
+                            Click below to run the trained machine
+                            learning model.
+                        </p>
+
+                    </div>
+
+                    <div class="ai-circle">
+                        ✨
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="predict-btn">
+
+                    <span>Predict Customer Churn</span>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                {% if prediction %}
+
+                <div class="result-box
+                    {% if prediction == 'Yes' %}
+                        churn
+                    {% else %}
+                        safe
+                    {% endif %}">
+
+                    <div class="result-icon">
+
+                        {% if prediction == 'Yes' %}
+                            ⚠️
+                        {% else %}
+                            ✓
+                        {% endif %}
+
+                    </div>
+
+                    <div>
+
+                        <span class="result-title">
+                            Prediction Result
+                        </span>
+
+                        <h2>
+                            {% if prediction == 'Yes' %}
+                                Customer Likely to Churn
+                            {% else %}
+                                Customer Likely to Stay
+                            {% endif %}
+                        </h2>
+
+                        <p>
+                            {% if prediction == 'Yes' %}
+                                This customer shows characteristics
+                                associated with churn.
+                            {% else %}
+                                This customer shows a lower risk
+                                of leaving the service.
+                            {% endif %}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+    </form>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            Customer Churn Prediction •
+            Machine Learning Project
+        </p>
+
+        <span>
+            Built with Python • Flask • Machine Learning
+        </span>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
